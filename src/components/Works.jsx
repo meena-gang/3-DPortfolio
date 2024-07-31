@@ -18,63 +18,64 @@ const ProjectCard = ({
   live_link
 }) => {
   return (
-    <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
-      <Tilt
-        options={{
-          max: 45,
-          scale: 1,
-          speed: 450,
-        }}
-        className='bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full'
-      >
-        <div className='relative w-full h-[230px]'>
+  <motion.div variants={fadeIn("up", "spring", index * 0.5, 0.75)}>
+  <Tilt
+    options={{
+      max: 45,
+      scale: 1,
+      speed: 450,
+    }}
+    className='bg-tertiary p-5 rounded-2xl w-full  lg:w-[360px]'
+  >
+    <div className='relative w-full h-[230px]'>
+      <img
+        src={image}
+        alt='project_image'
+        className='w-full h-full object-cover rounded-2xl'
+      />
+
+      <div className="flex flex-col justify-self-end gap-1.5 absolute top-0 right-0 m-2">
+        <div
+          onClick={() => window.open(source_code_link, "_blank")}
+          className='black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer'
+        >
           <img
-            src={image}
-            alt='project_image'
-            className='w-full h-full object-cover rounded-2xl'
+            src={github}
+            alt='source code'
+            className='w-1/2 h-1/2 object-contain'
           />
-
-          <div className="flex flex-col justify-self-end gap-1.5 absolute top-0 right-0 m-2">
-            <div
-              onClick={() => window.open(source_code_link, "_blank")}
-              className='black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer'
-            >
-              <img
-                src={github}
-                alt='source code'
-                className='w-1/2 h-1/2 object-contain'
-              />
-            </div>
-            <div
-              onClick={() => window.open(live_link, "_blank")}
-              className='green-pink-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer'
-            >
-              <img
-                src={rocket}
-                alt='source code'
-                className='w-1/2 h-1/2 object-contain'
-              />
-            </div>
-          </div>
         </div>
-
-        <div className='mt-5'>
-          <h3 className='text-white font-bold text-[24px]'>{name}</h3>
-          <p className='mt-2 text-secondary text-[14px]'>{description}</p>
+        <div
+          onClick={() => window.open(live_link, "_blank")}
+          className='green-pink-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer'
+        >
+          <img
+            src={rocket}
+            alt='source code'
+            className='w-1/2 h-1/2 object-contain'
+          />
         </div>
+      </div>
+    </div>
 
-        <div className='mt-4 flex flex-wrap gap-2'>
-          {tags.map((tag) => (
-            <p
-              key={`${name}-${tag.name}`}
-              className={`text-[14px] ${tag.color}`}
-            >
-              #{tag.name}
-            </p>
-          ))}
-        </div>
-      </Tilt>
-    </motion.div>
+    <div className='mt-5'>
+      <h3 className='text-white font-bold text-[24px]'>{name}</h3>
+      <p className='mt-2 text-secondary text-[14px]'>{description}</p>
+    </div>
+
+    <div className='mt-4 flex flex-wrap gap-2'>
+      {tags.map((tag) => (
+        <p
+          key={`${name}-${tag.name}`}
+          className={`text-[14px] ${tag.color}`}
+        >
+          #{tag.name}
+        </p>
+      ))}
+    </div>
+  </Tilt>
+</motion.div>
+
   );
 };
 

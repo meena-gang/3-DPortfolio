@@ -53,7 +53,7 @@ export const navLinks = [
     id: "contact",
     title: "Contact",
   },
-];
+ ];
 
 const services = [
   {
@@ -182,13 +182,13 @@ const experiences = [
 
 const testimonials = [
   {
-    image:  githubStreak,
+    image: 'https://streak-stats.demolab.com/?user=meena-gang&theme=dark',
   },
   {
-    image: githubProfile,
+    image: 'https://github-readme-stats.vercel.app/api?username=meena-gang&show_icons=true&theme=dark',
   },
   {
-    image: githubSCommits,
+    image: 'https://ghchart.rshah.org/meena-gang',
   },
 ];
 

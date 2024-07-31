@@ -202,3 +202,49 @@
       -2.6em 0em 0 0em rgba(255, 255, 255, 0.7), -1.8em -1.8em 0 0em #ffffff;
   }
 }
+/* Add this to your main CSS file or in a dedicated CSS module for the Navbar */
+
+@media (max-width: 640px) {
+  .nav-item {
+    display: block;
+    margin-bottom: 1rem;
+  }
+  
+  .nav-logo {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .nav-title {
+    font-size: 16px;
+  }
+
+  .nav-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  .nav-menu {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    background: #000;
+    position: absolute;
+    top: 60px;
+    right: 0;
+    width: 100%;
+    padding: 1rem;
+  }
+
+  .nav-menu.active {
+    display: flex;
+  }
+
+  .nav-menu a {
+    margin-bottom: 1rem;
+  }
+}

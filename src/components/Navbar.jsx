@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-
 import { styles } from "../styles";
 import { navLinks } from "../constants";
 import { logo, menu, close } from "../assets";
@@ -25,6 +24,24 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const handleClick = () => {
+    setActive("Resume");
+
+    const resumeUrl = '/public/MeenaGang-FullStackWebDeveloper-Ibxf.pdf';
+
+    // Open in a new tab
+    const newWindow = window.open(resumeUrl, '_blank');
+    if (newWindow) newWindow.opener = null;
+
+    // Create a link element for downloading
+    const link = document.createElement('a');
+    link.href = resumeUrl;
+    link.download = 'MeenaGang-FullStackWebDeveloper-xbRM.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <nav
       className={`${
@@ -33,7 +50,7 @@ const Navbar = () => {
         scrolled ? "bg-primary" : "bg-transparent"
       }`}
     >
-      <div className='w-full flex justify-between items-center max-w-7xl mx-auto'>
+      <div className='w-full flex justify-between items-center max-w-7xl mx-auto nav-container'>
         <Link
           to='/'
           className='flex items-center gap-2'
@@ -42,8 +59,8 @@ const Navbar = () => {
             window.scrollTo(0, 0);
           }}
         >
-          <img src={logo} alt='logo' className='w-9 h-9 object-contain' />
-          <p className='text-white text-[18px] font-bold cursor-pointer flex '>
+          <img src={logo} alt='logo' className='w-9 h-9 object-contain nav-logo' />
+          <p className='text-white text-[18px] font-bold cursor-pointer flex nav-title'>
             Meena &nbsp;
             <span className='sm:block hidden'>| Fullstack Web Dev.</span>
           </p>
@@ -55,15 +72,24 @@ const Navbar = () => {
               key={nav.id}
               className={`${
                 active === nav.title ? "text-white" : "text-secondary"
-              } hover:text-white text-[18px] hover:underline font-medium cursor-pointer`}
+              } hover:text-white text-[18px] hover:underline font-medium cursor-pointer nav-item`}
               onClick={() => setActive(nav.title)}
             >
               <a href={`#${nav.id}`}>{nav.title}</a>
             </li>
           ))}
+          <li
+            className={`${
+              active === "Resume" ? "text-white" : "text-secondary"
+            } hover:text-white text-[18px] hover:underline font-medium cursor-pointer nav-item`}
+          >
+            <a href="/public/MeenaGang-FullStackWebDeveloper-xbRM.pdf" target="_blank">
+              <button onClick={handleClick}>Resume</button>
+            </a>
+          </li>
         </ul>
 
-        <div className='sm:hidden flex flex-1 justify-end items-center'>
+        <div className='sm:hidden flex flex-1 justify-end items-center nav-toggle'>
           <img
             src={toggle ? close : menu}
             alt='menu'
@@ -74,7 +100,9 @@ const Navbar = () => {
           <div
             className={`${
               !toggle ? "hidden" : "flex"
-            } p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`}
+            } p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl nav-menu ${
+              toggle ? 'active' : ''
+            }`}
           >
             <ul className='list-none flex justify-end items-start flex-1 flex-col gap-4'>
               {navLinks.map((nav) => (
@@ -91,6 +119,18 @@ const Navbar = () => {
                   <a href={`#${nav.id}`}>{nav.title}</a>
                 </li>
               ))}
+              <li
+                className={`font-poppins font-medium cursor-pointer text-[16px] ${
+                  active === "Resume" ? "text-white" : "text-secondary"
+                }`}
+                onClick={() => {
+                  setToggle(!toggle);
+                  setActive("Resume");
+                  handleClick();
+                }}
+              >
+                <button>Resume</button>
+              </li>
             </ul>
           </div>
         </div>
