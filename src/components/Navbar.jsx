@@ -27,7 +27,7 @@ const Navbar = () => {
   const handleClick = () => {
     setActive("Resume");
 
-    const resumeUrl = '/public/MeenaGang-FullStackWebDeveloper-Ibxf.pdf';
+    const resumeUrl = '/public/meenaPortfolio.pdf';
 
     // Open in a new tab
     const newWindow = window.open(resumeUrl, '_blank');
@@ -36,7 +36,7 @@ const Navbar = () => {
     // Create a link element for downloading
     const link = document.createElement('a');
     link.href = resumeUrl;
-    link.download = 'MeenaGang-FullStackWebDeveloper-xbRM.pdf';
+    link.download = 'meenaPortfolio.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
