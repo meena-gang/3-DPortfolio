@@ -27,7 +27,7 @@ const Navbar = () => {
   const handleClick = () => {
     setActive("Resume");
 
-    const resumeUrl = '/public/meenaPortfolio.pdf';
+    const resumeUrl = '/meenaPortfolio.pdf';
 
     // Open in a new tab
     const newWindow = window.open(resumeUrl, '_blank');

@@ -54,7 +54,7 @@ const About = () => {
             real-world problems. Let's work together to bring your ideas to life!
           </motion.p>
   
-        <img src='src/assets/pic.png' className="w-80 mt-4 lg:mt-0" />
+        <img src='/pic.png' className="w-80 mt-4 lg:mt-0" />
       </motion.div>
 
 
